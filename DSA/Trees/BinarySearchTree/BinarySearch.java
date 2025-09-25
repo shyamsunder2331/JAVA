@@ -54,6 +54,12 @@ class BST{
         insert(nums[i]);
       }
   }
+  public boolean isBalanced(){
+    return balanced(root);
+  }
+  public boolean balanced(Node node){
+    if(node==null) return true;
+    return (Math.abs(height(node.left)-height(node.right))<=1 && balanced(node.left) && balanced(node.right));
 }
 public class BinarySearch{
   public static void main(String[] args){
@@ -61,5 +67,6 @@ public class BinarySearch{
       int[] arr={8,5,6,7,4,3,9,11,10};
       bst.populate(arr);
       bst.display();
+      System.out.println(bst.isBalanced());
   }
 }
