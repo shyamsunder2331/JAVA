@@ -47,3 +47,45 @@ public class PrintingLIS{
         }
   }
 }
+/*import java.util.*;
+import java.io.*;
+public class PrintingLIS{
+    public static void lis(int[] dp,int[] prev,int[] arr){
+        for(int i=0;i<arr.length;i++){
+            for(int j=0;j<i;j++){
+                if(arr[j]<arr[i]){
+                    dp[i]=Math.max(dp[i],1+dp[j]);
+                    prev[i]=j;
+                }
+            }
+        }
+    }
+    public static void main(String[] args) throws IOException{  
+            BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+            int n=Integer.parseInt(br.readLine());
+            int[] arr=new int[n];
+            String[] s=br.readLine().split(" ");
+            for(int i=0;i<n;i++){
+                arr[i]=Integer.parseInt(s[i]);
+            }
+            int[] dp=new int[n];
+            int[] prev=new int[n];
+            Arrays.fill(dp,1);
+            Arrays.fill(prev,-1);
+            lis(dp,prev,arr);
+            int maxLen=0,maxInd=-1;
+            for(int i=0;i<n;i++){
+                if(dp[i]>maxLen){
+                    maxLen=dp[i];
+                    maxInd=i;
+                }
+            }
+            List<Integer> list=new ArrayList<>();
+            int curr=maxInd;
+            while(curr!=-1){
+                list.add(arr[curr]);
+                curr=prev[curr];
+            }
+            for(int i=list.size()-1;i>=0;i--) System.out.print(list.get(i)+" ");
+    }
+}*/
