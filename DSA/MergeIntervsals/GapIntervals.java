@@ -1,6 +1,6 @@
 import java.util.*;
 import java.io.*;
-public class MergeIntervals
+public class GapIntervals
 {
 	public static void main(String[] args) throws IOException{
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
