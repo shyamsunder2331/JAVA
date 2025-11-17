@@ -13,14 +13,15 @@ public class Main{
         int[] dp=new int[n+1];
         dp[0]=1;
       for(int i=1;i<=n;i++){
-        char c=s.charAt(i);
-        if(c=='*){
+        char c=s.charAt(i-1);
+        if(c=='*'){
           dp[i]+=9*dp[i-1];
-        }else if(c!='0'){
+        }
+        else if(c!='0'){
           dp[i]+=dp[i-1];
         }
         if(i>1){
-          char p=s.cahrAt(i-2);
+          char p=s.charAt(i-2);
           if(p=='1'){
             if(c=='*'){
               dp[i]+=9*dp[i-2];
