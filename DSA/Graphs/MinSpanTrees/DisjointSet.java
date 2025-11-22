@@ -3,7 +3,7 @@ import java.io.*;
 class DisjointSetByRank{
     List<Integer> rank=new ArrayList<>();
     List<Integer> parent=new ArrayList<>();
-    public DisjointSet(int n){
+    public DisjointSetByRank(int n){
         for(int i=0;i<=n;i++){
             rank.add(0);
             parent.add(i);
@@ -33,23 +33,22 @@ class DisjointSetByRank{
             rank.set(ulp_v,rankU+1);
         }
     }
+    public void print(){
+        for(Integer i:rank) System.out.print(i+" ");
+        for(Integer i:parent) System.out.print(i+" ");
+    }
 }
 public class Main{
     public static void main(String[] args) throws IOException{
         BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
         int n=Integer.parseInt(br.readLine());
         int edges=Integer.parseInt(br.readLine());
-        DisjointSet ds=new DisjointSet(n);
+        DisjointSetByRank ds=new DisjointSetByRank(n);
         for(int i=0;i<edges;i++){
             String[] s=br.readLine().split(" ");
             int src=Integer.parseInt(s[0]);
             int dst=Integer.parseInt(s[1]);
             ds.unionByRank(src,dst);
-            if(ds.ultimateParent(src)==ds.ultimateParent(dst)){
-                System.out.println(src+" "+dst+"They are from the same component of the graph");
-            }else{
-                System.out.println(src+" "+dst+"They are from different components of the graph");
-            }
         }
         int start=Integer.parseInt(br.readLine());
         int end=Integer.parseInt(br.readLine());
@@ -58,5 +57,6 @@ public class Main{
         }else{
             System.out.println("Not same component");
         }
+        ds.print();
     }
 }
