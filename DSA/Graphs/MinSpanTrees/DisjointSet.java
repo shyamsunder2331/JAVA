@@ -1,4 +1,3 @@
-// using the disjoint set  we can find if the two elements are in the same component of the graph or not in constant time rather by traversing and finding in O(V+E) time.
 import java.util.*;
 import java.io.*;
 class DisjointSet{
@@ -22,10 +21,12 @@ class DisjointSet{
         int ulp_u=ultimateParent(u);
         int ulp_v=ultimateParent(v);
         if(ulp_v==ulp_u) return;
-        else if(rank.get(ulp_u)<rank.get(ulp_v)){
+        if(rank.get(ulp_u)<rank.get(ulp_v)){
             parent.set(ulp_u,ulp_v);
+            rank.set(ulp_v,rank.get(ulp_v)+1);
         }else if(rank.get(ulp_v)<rank.get(ulp_u)){
             parent.set(ulp_v,ulp_u);
+            rank.set(ulp_u,rank.get(ulp_u)+1);
         }else{
             parent.set(ulp_u,ulp_v);
             int rankU=rank.get(ulp_v);
@@ -44,13 +45,18 @@ public class Main{
             int src=Integer.parseInt(s[0]);
             int dst=Integer.parseInt(s[1]);
             ds.unionByRank(src,dst);
+            if(ds.ultimateParent(src)==ds.ultimateParent(dst)){
+                System.out.println(src+" "+dst+"They are from the same component of the graph");
+            }else{
+                System.out.println(src+" "+dst+"They are from different components of the graph");
+            }
         }
         int start=Integer.parseInt(br.readLine());
         int end=Integer.parseInt(br.readLine());
         if(ds.ultimateParent(start)==ds.ultimateParent(end)){
-            System.out.println("They are from the same component of the graph");
+            System.out.println("same component");
         }else{
-            System.out.println("They are from different components of the graph");
+            System.out.println("Not same component");
         }
     }
 }
