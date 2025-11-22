@@ -1,6 +1,6 @@
 import java.util.*;
 import java.io.*;
-class DisjointSet{
+class DisjointSetByRank{
     List<Integer> rank=new ArrayList<>();
     List<Integer> parent=new ArrayList<>();
     public DisjointSet(int n){
