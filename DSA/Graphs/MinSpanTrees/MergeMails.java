@@ -20,8 +20,9 @@ class DisjointSet{
             int ulp_v=ultimateParent(v);
             if(ulp_u==ulp_v) return;
             if(rank[ulp_u]<rank[ulp_v]){
-                parent[ulp_u]=ulp_v;
-                rank[ulp_v]+=1;
+                parent[ulp_u]=ulp_v;                
+            }else if(rank[ulp_v]<rank[ulp_u]{
+                 parent[ulp_v]=ulp_u;   
             }else{
                 parent[ulp_v]=ulp_u;
                 rank[ulp_v]+=1;
