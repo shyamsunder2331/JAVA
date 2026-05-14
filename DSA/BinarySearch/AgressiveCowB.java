@@ -28,6 +28,6 @@ class AgressiveCowB{
             }
         }
         System.out.println(res);
-        
+        System.out.println(res);
     }
 }
